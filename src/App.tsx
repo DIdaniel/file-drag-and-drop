@@ -1,14 +1,14 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
-import { FileDnD } from "./components/FileDnD";
 import { Box, css, styled } from "@mui/material";
+import { FileDnD, Todos } from "./components";
+import { TodosContextProvider } from "./context/TodosContext";
 
 const Container = styled(Box)(({ theme }) => {
   return css`
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
 
     width: 100vw;
     height: 100vh;
@@ -16,13 +16,11 @@ const Container = styled(Box)(({ theme }) => {
 });
 
 function App() {
-  const onUpload = (files: any) => {
-    console.log(files);
-  };
-
   return (
     <Container>
-      <FileDnD onUpload={onUpload} />
+      <TodosContextProvider>
+        <Todos />
+      </TodosContextProvider>
     </Container>
   );
 }

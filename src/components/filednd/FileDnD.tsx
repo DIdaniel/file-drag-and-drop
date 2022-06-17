@@ -6,7 +6,6 @@ import React, {
   useState,
 } from "react";
 import { Box, Button, css, styled, Typography } from "@mui/material";
-import { CustomChildren } from "./CustomChildren";
 
 const Container = styled(Box)(({ theme }) => {
   return css`
@@ -22,7 +21,7 @@ const Container = styled(Box)(({ theme }) => {
 });
 
 type FileDnDProps = {
-  onUpload: (files: any) => void;
+  //
 };
 
 type FileTypes = {
@@ -32,7 +31,7 @@ type FileTypes = {
 
 export const FileDnD = (props: FileDnDProps) => {
   /** Property */
-  const { onUpload, ...others } = props;
+  const { ...others } = props;
 
   const dragRef = useRef<HTMLLabelElement | null>(null);
   const fileId = useRef<number>(0);
@@ -144,6 +143,7 @@ export const FileDnD = (props: FileDnDProps) => {
         type="file"
         accept={"*"}
         id={"fileUpload"}
+        multiple={true}
         style={{ display: "none" }}
       />
       <label htmlFor="fileUpload" ref={dragRef}>
